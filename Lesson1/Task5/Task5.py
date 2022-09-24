@@ -5,15 +5,15 @@
 from math import sqrt
 
 class Point:
-	def __init__(self, X, Y):
-		self.X = int(X)
-		self.Y = int(Y)
-	def Distance(Self, Point):
-		return round(sqrt((Point.X - Self.X) ** 2 + (Point.Y - Self.Y) ** 2), 2);
+	def __init__(self, x, y):
+		self.x = int(x)
+		self.y = int(y)
+	def distance(self, point):
+		return round(sqrt((point.x - self.x) ** 2 + (point.y - self.y) ** 2), 2);
 
 point = list(map(int, input('Input point A(X,Y):').split(',')))
-A = Point(point[0], point[1])
+a = Point(point[0], point[1])
 point = list(map(int, input('Input point B(X,Y):').split(',')))
-B = Point(point[0], point[1])
+b = Point(point[0], point[1])
 
-print(f'Distance={B.Distance(A)}')
+print(f'Distance={b.distance(a)}')
