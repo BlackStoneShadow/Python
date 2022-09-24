@@ -11,9 +11,9 @@ class Point:
 	def Distance(Self, Point):
 		return round(sqrt((Point.X - Self.X) ** 2 + (Point.Y - Self.Y) ** 2), 2);
 
-point = input('Input point A(X,Y):').split(',')
+point = list(map(int, input('Input point A(X,Y):').split(',')))
 A = Point(point[0], point[1])
-point = input('Input point B(X,Y):').split(',')
+point = list(map(int, input('Input point B(X,Y):').split(',')))
 B = Point(point[0], point[1])
 
 print(f'Distance={B.Distance(A)}')

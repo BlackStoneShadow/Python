@@ -1,21 +1,15 @@
 #Напишите программу, которая по заданному номеру четверти, 
 #показывает диапазон возможных координат точек в этой четверти (x и y).
-N = 0
+n = 0
 
-while ~(0 < N < 5):
-	N = int(input('Input N:'))
+while n < 1 or n > 4:
+	n = int(input('Input N:'))
 
-	if N == 1:
-		print('X > 0 and Y > 0')
-		break
-	elif N == 2:
-		print('X < 0 and Y > 0')
-		break
-	elif N == 3:
-		print('X < 0 and Y < 0')
-		break
-	elif N == 4:
-		print('X > 0 and Y < 0')
-		break
-	else:
-		print('Error input!')
+if n == 1:
+	print('X > 0 and Y > 0')
+elif n == 2:
+	print('X < 0 and Y > 0')
+elif n == 3:
+	print('X < 0 and Y < 0')
+elif n == 4:
+	print('X > 0 and Y < 0')

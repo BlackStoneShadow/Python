@@ -3,9 +3,11 @@
 #- 6 -> да
 #- 7 -> да
 #- 1 -> нет
-Day = int(input('Input day number:'))
+day = 0
+while day < 1 or day > 7:
+    day = int(input('Input day number:'))
 
-if (5 < Day < 8):
-	print(f'{Day} - Yes')
+if (5 < day < 8):
+	print(f'{day} - Yes')
 else:
-	print(f'{Day} - No')
+	print(f'{day} - No')

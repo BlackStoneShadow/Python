@@ -5,24 +5,18 @@
 #- x=2; y=4-> 1
 #- x=-34; y=-30 -> 3
 
-X = 0
-Y = 0
+x = 0
+y = 0
 
-while X == 0 and Y == 0:
-	X = int(input('Input X:'))
-	Y = int(input('Input Y:'))
+while x == 0 or y == 0:
+	x = int(input('Input X:'))
+	y = int(input('Input Y:'))
 
-	if X > 0 and Y > 0:
-		print(1)
-		break
-	elif X < 0 and Y > 0:
-		print(2)
-		break
-	elif X < 0 and Y < 0:
-		print(3)
-		break
-	elif X > 0 and Y < 0:
-		print(4)
-		break
-	else:
-		print('Error input!')
+if x > 0 and y > 0:
+	print(1)
+elif x < 0 and y > 0:
+	print(2)
+elif x < 0 and y < 0:
+	print(3)
+elif x > 0 and y < 0:
+	print(4)
