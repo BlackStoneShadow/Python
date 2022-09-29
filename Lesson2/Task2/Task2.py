@@ -9,11 +9,8 @@ number = None
 while not is_int(str(number)):
     number = input("Input number:")
 
-result = []
-for i in range(int(number)):
-    value = 1
-    for j in range(i + 1):
-        value *= j + 1
-    result.append(value)
+result = [1]
+for i in range(1, int(number)):
+    result.append(result[i - 1] * (i + 1))
 
 print(result)
