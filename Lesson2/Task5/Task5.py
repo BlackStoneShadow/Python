@@ -20,8 +20,10 @@ print(result)
 for i in result:
     index = randint(0, number - 1)
     
-    temp = result[0]    
-    result[0] = result[index]   
-    result[index] = temp  
+    result[0], result[index] = result[index], result[0]   
+
+    #temp = result[0]    
+    #result[0] = result[index]   
+    #result[index] = temp  
 
 print(result)
