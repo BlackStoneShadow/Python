@@ -15,8 +15,8 @@ result = dict()
 for i in range(1, number+1):
     result[i] = round((1 + 1 / i) ** i)
 
-sum = 0
+my_sum = 0
 for i in result: 
-    sum += result[i]
+    my_sum += result[i]
 
-print(result, '->', sum)
+print(result, '->', my_sum)
