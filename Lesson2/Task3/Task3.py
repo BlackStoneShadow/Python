@@ -11,12 +11,12 @@ while not is_int(str(number)):
 
 number = int(number)
 
-result = []
+result = dict()
 for i in range(1, number+1):
-    result.append(round((1 + 1 / i) ** i))
+    result[i] = round((1 + 1 / i) ** i)
 
 sum = 0
 for i in result: 
-    sum += i
+    sum += result[i]
 
 print(result, '->', sum)
