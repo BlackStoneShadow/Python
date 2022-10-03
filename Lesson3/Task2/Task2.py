@@ -8,7 +8,7 @@ def is_int(number):
 
 number = None
 
-while not is_int(str(number)) or int(number) % 2 != 0:
+while not is_int(str(number)):
     number = input("Input number:")
 
 number = int(number)
@@ -17,7 +17,7 @@ array = list(range(number))
 
 result = list()
 
-for i in range(0, int(number / 2)):
-    result.append(array[i] * array[number - (i + 1)])
+for i in range(0, (number + 1) // 2):
+    result.append(array[i] * array[-(i + 1)])
 
 print(array, '->', result)
