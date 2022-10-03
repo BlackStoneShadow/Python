@@ -18,8 +18,8 @@ result = list(map(lambda i: round(i / randint(i, number), 2), range(1, number + 
 
 min_rest = 1
 max_rest = 0
-for i in result:
-    if i % 1 < min_rest: min_rest = i % 1
-    if i % 1 > max_rest: max_rest = i % 1
+for i in [num % 1 for num in result if num % 1 != 0]:
+    if i < min_rest: min_rest = i
+    if i > max_rest: max_rest = i
 
 print(result, '->', max_rest - min_rest)
