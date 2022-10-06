@@ -2,19 +2,16 @@
 #Пример:
 #- 6782 -> 23
 #- 0,56 -> 11
-def get_digit(text):
-    result = text
-    if result[0] == '-':
-        result = result[1:]
-    
-    return result.replace('.', '', 1)
 
-def is_float(number):   
+def get_digit(text):      
+    return str().join([chr for chr in text if chr.isdigit()])
+
+def is_digit(number):   
     return get_digit(number).isdigit()
 
 number = None
 
-while not is_float(str(number)):
+while not is_digit(str(number)):
     number = input("Input number:")
 
 sum = 0
