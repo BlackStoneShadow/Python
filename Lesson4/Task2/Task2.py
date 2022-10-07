@@ -1,17 +1,18 @@
 #Задайте натуральное число N. 
 #Напишите программу, которая составит список простых множителей числа N.
-from math import sqrt
 
-def is_int(number):
-    return number.isdigit()
+def try_castinput(message, type):
+    result = str()
+   
+    try:
+        result = type(input(message))
+    except:
+        result = try_castinput(message, type)
 
-number = None
+    return result
 
-while not is_int(str(number)):
-    number = input("Input number:")
+number = try_castinput("Input number:", int)
 
-number = int(number)
-
-result = [(num, int(number / num)) for num in range(1, number + 1) if not number % num]
+result = [(num, number // num) for num in range(1, number + 1) if not number % num]
 
 print(result)

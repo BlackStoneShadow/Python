@@ -1,1 +1,49 @@
-with open('rez01.txt', 'w') as file:    file.write('3*x**8+9*x**7+3*x**6+3*x**5+8*x**4+3*x**3+10*x**2+2*x+4')with open('rez02.txt', 'w') as file:    file.write('6*x**8+10*x**7+7*x**5+10*x**4+7*x**3+5*x**2+10')with open('rez01.txt','r') as file:    o_1 = file.readline()    l_1 = o_1.split()with open('rez02.txt','r') as file:    o_2 = file.readline()    l_2 = o_2.split()print(f'{l_1} + {l_2}')sum_poly = l_1 + l_2with open('sum_rez.txt', 'w') as file:    file.write(f'{l_1} + {l_2}')
+#Даны два файла, в каждом из которых находится запись многочлена. 
+#Задача - сформировать файл, содержащий сумму многочленов.
+def read_data(file_name):
+    with open(file_name, 'r') as data:
+        return data.readline()
+
+def write_data(file_name, text):
+    with open(file_name, 'w') as data:
+        return data.write(text)
+
+def set_operand(fun):
+    result = list()
+
+    for operand in fun.split('+'):        
+        operand = operand.replace('x ', 'x^1').replace(' = ', 'x^0')
+        result.append(reversed(list(map(lambda item: int(item), operand.split('x^')))))
+        
+    return dict(result)
+
+def get_operand(num, pwr):
+    if pwr == 0:
+        return str(num)
+    elif pwr == 1:
+        return str(num) + "x"
+    else:
+        return str(num) + "x^" + str(pwr)
+
+def sum_operand(fun1, fun2):
+    result = dict()
+
+    for i in range(max(len(fun1), len(fun2)) - 1, -1, -1):
+        a , b = 0, 0
+        if i in fun1.keys():
+            a = fun1[i]
+        if i in fun2.keys():
+            b = fun2[i]        
+        
+        result[i] = a + b
+
+    return result
+
+fun1 = read_data('File1.txt')
+fun2 = read_data('File2.txt')
+
+list_operands = [get_operand(num, pwr) for pwr, num in sum_operand(set_operand(fun1), set_operand(fun2)).items()]
+
+result = " + ".join(list_operands) + ' = 0'
+
+write_data('File3.txt', result)
