@@ -3,8 +3,13 @@
 #- 6782 -> 23
 #- 0,56 -> 11
 
-def get_digit(text):      
-    return str().join([chr for chr in text if chr.isdigit()])
+def get_digit(text):
+    result = text
+    if result[0] == '-':
+        result = result[1:]    
+    #заменить только первое вхождение,
+    #при дальнейших вхождениях isdigit = false
+    result = result.replace('.', '', 1) 
 
 def is_digit(number):   
     return get_digit(number).isdigit()
