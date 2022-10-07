@@ -1,25 +1,35 @@
-import random
+#Задана натуральная степень k. 
+#Сформировать случайным образом список коэффициентов (значения от 0 до 100) многочлена и записать в файл многочлен степени k.
+#Пример:
+#- k=2 => 2*x² + 4*x + 5 = 0 или x² + 5 = 0 или 10*x² = 0
+from random import randint
 
-def generate_superscript(x, n):
-    if n == 0:
-        return str(x)
-    if n == 1:
-        return str(x)+"x"
-    superscript = ["⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹"]
-    result = str(x)
-    if x != 0:
-        result += "x"
-    for i in str(n):
-        result += superscript[int(i)]
+def try_castinput(message, type):
+    result = str()
+   
+    try:
+        result = type(input(message))
+    except:
+        result = try_castinput(message, type)
+
     return result
 
-def generate_polynomial(k):
-    result = []
-    for i in range(k, -1, -1):
-        coefficient = random.randint(0, 100)
-        if coefficient != 0:
-            result.append(generate_superscript(coefficient, i))
-    return "+".join(result)
+def get_operand(num, pwr):
+    if pwr == 0:
+        return str(num)
+    elif pwr == 1:
+        return str(num) + "x"
+    else:
+        return str(num) + "x^" + str(pwr)
 
+k = try_castinput("Input extent:", int)
 
-print(generate_polynomial(10))
+list_operands = list()
+
+for i in range(k, -1, -1):
+    list_operands.append(get_operand(randint(0, 100), i))
+
+result = " + ".join(list_operands) + ' = 0'
+
+with open('File.txt', 'w') as data:
+    data.write(result)
