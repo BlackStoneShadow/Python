@@ -13,6 +13,6 @@ def try_castinput(message, type):
 
 number = try_castinput("Input number:", int)
 
-result = [(num, number // num) for num in range(1, number + 1) if not number % num]
+result = [(num, number // num) for num in range(1, number + 1) if num % 2 and num % 3 and not number % num]
 
 print(result)
