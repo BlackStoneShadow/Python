@@ -12,6 +12,6 @@ def try_castinput(message, type):
 
     return result
 
-number = try_castinput("Input number:", float)
+number = try_castinput("Input number format 0.:", float)
 
 print('pi->', round(int(pi / number) * number, 10)) 

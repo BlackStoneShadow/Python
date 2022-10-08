@@ -24,12 +24,12 @@ def get_operand(num, pwr):
 
 k = try_castinput("Input extent:", int)
 
-list_operands = list()
+operands = list()
 
 for i in range(k, -1, -1):
-    list_operands.append(get_operand(randint(0, 100), i))
+    operands.append(get_operand(randint(0, 100), i))
 
-result = " + ".join(list_operands) + ' = 0'
+result = " + ".join(operands) + ' = 0'
 
 with open('File.txt', 'w') as data:
     data.write(result)

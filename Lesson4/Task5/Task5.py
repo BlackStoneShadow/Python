@@ -42,8 +42,8 @@ def sum_operand(fun1, fun2):
 fun1 = read_data('File1.txt')
 fun2 = read_data('File2.txt')
 
-list_operands = [get_operand(num, pwr) for pwr, num in sum_operand(set_operand(fun1), set_operand(fun2)).items()]
+operands = [get_operand(num, pwr) for pwr, num in sum_operand(set_operand(fun1), set_operand(fun2)).items()]
 
-result = " + ".join(list_operands) + ' = 0'
+result = " + ".join(operands) + ' = 0'
 
 write_data('File3.txt', result)
