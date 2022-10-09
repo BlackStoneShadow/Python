@@ -1,0 +1,45 @@
+#Реализуйте RLE алгоритм: реализуйте модуль сжатия и восстановления данных.
+def read_data(file_name):
+    with open(file_name, 'r') as data:
+        return data.readline()
+
+def write_data(file_name, text):
+    with open(file_name, 'w') as data:
+        return data.write(text)
+
+def encode(data):
+    result = str()
+    encode_char = str()
+    count = 1
+
+    if not data: return str()
+
+    for char in data:
+        if char != encode_char:
+            if encode_char:
+                result += str(count) + encode_char
+            count = 1
+            encode_char = char
+        else:
+            count += 1
+    else:
+        result += str(count) + encode_char
+        return result
+
+def decode(data):
+    result = str()
+    number = str()
+
+    if not data: return str()
+
+    for char in data:
+        if char.isdigit():
+            number += char
+        else:
+            result += char * int(number)
+            number = str()
+
+    return result
+
+write_data('FileEncode.txt', encode(read_data('FileDecode.txt')))
+write_data('FileDecode.txt', decode(read_data('FileEncode.txt')))
