@@ -9,22 +9,20 @@ def write_data(file_name, text):
 
 def encode(data):
     result = str()
-    encode_char = str()
-    count = 1
 
-    if not data: return str()
-
-    for char in data:
-        if char != encode_char:
-            if encode_char:
-                result += str(count) + encode_char
-            count = 1
-            encode_char = char
-        else:
-            count += 1
-    else:
-        result += str(count) + encode_char
+    if len(data) == 0:
         return result
+
+    char = data[0]
+    for i in range(1, len(data)):
+        result = str(i) + char
+        if data[i] != char:
+            result += encode(data[i:])
+            break
+    else:
+        result = str(i + 1) + char
+                    
+    return  result
 
 def decode(data):
     result = str()
