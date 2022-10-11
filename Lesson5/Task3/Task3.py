@@ -83,10 +83,13 @@ def finish(matrix):
         return symbol
     #Обратная диагональ
     symbol = matrix[0][SIZE - 1]    
-    for i in range(1, SIZE):
-        if matrix[i][SIZE - i] != symbol:
+    for i in range(1, SIZE - 1):
+        if matrix[i][SIZE - (i + 1)] != symbol:
             symbol = str()
             break
+    
+    if symbol != str():
+        return symbol
     #Ничья
     symbol = '*'
     for i in range(SIZE):
