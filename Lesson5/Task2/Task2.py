@@ -25,16 +25,19 @@ def try_castinput(message, type):
 
 def input_palyer(message):
     return try_castinput(message, int)
+
 def input_palyer1(name, count = 0):
     if name:
         return "player1"
     else:
         return input_palyer('Input player1 count:')
+
 def input_palyer2(name, count = 0):
     if name:
         return "player2"
     else:
         return input_palyer('Input player2 count:')
+
 def input_bot(name, count = 0):    
     if name:
         return "bot"
@@ -42,6 +45,7 @@ def input_bot(name, count = 0):
         result = randint(1, MAX_STEP)
         print('Input bot count:', result)
         return result
+
 def input_smartbot(name, count = 0):    
     if name:
         return "smartbot"
@@ -54,6 +58,7 @@ def input_smartbot(name, count = 0):
         print('Input bot count:', result)
 
         return result
+
 def input_count(play, count):
     result = 0
     while not 0 < result < MAX_STEP + 1:
@@ -64,11 +69,11 @@ def play(player1, player2):
     if randint(1, 2) % 2 == 0 or player2(True) == 'smartbot':
         player1, player2 = player2, player1
     
-    play_sum, prev_sum, idx = 0, 0, 0
+    play_sum, prev_sum, motion = 0, 0, 0
     while play_sum != MAX_COUNT:          
         print('rest:', MAX_COUNT - play_sum)            
         
-        if idx % 2 == 0:
+        if motion % 2 == 0:
             player = player1
         else: 
             player = player2
@@ -82,18 +87,18 @@ def play(player1, player2):
 
         prev_sum = play_sum
         play_sum += count
-        idx += 1               
+        motion += 1               
 
     print('Winner:', player(True))        
 
 player_2 = None
-while player_2 not in (1, 2, 3):
+while player_2 not in ('p', 'b', 's'):
     system('cls')
-    player_2 = try_castinput('input second player(player=1, bot=2 or smartbot=3):', int)
+    player_2 = try_castinput('input second player(player=p, bot=b or smartbot=s):', str)
 
-if  player_2 == 1:
+if  player_2 == 'p':
     play(input_palyer1, input_palyer2)    
-elif player_2 == 2:
+elif player_2 == 'b':
     play(input_palyer1, input_bot)    
 else:
     play(input_palyer1, input_smartbot)    
