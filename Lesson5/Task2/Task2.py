@@ -43,7 +43,7 @@ def input_bot(name, count = 0):
         return "bot"
     else:
         result = randint(1, MAX_STEP)
-        print('Input bot count:', result)
+
         return result
 
 def input_smartbot(name, count = 0):    
@@ -55,14 +55,15 @@ def input_smartbot(name, count = 0):
         if count != 0: 
             result = (MAX_STEP + 1) - count
 
-        print('Input bot count:', result)
-
         return result
 
 def input_count(play, count):
     result = 0
     while not 0 < result < MAX_STEP + 1:
         result = play(False, count)               
+    
+    print(play(True), result, sep=':')
+    
     return result
 
 def play(player1, player2):
@@ -70,20 +71,21 @@ def play(player1, player2):
         player1, player2 = player2, player1
     
     play_sum, prev_sum, motion = 0, 0, 0
-    while play_sum != MAX_COUNT:          
-        print('rest:', MAX_COUNT - play_sum)            
-        
+    while play_sum != MAX_COUNT:                                  
         if motion % 2 == 0:
             player = player1
         else: 
             player = player2
         
+        if player(True) not in ('bot', 'smartbot'):
+            print('rest:', MAX_COUNT - play_sum)            
+
         count = MAX_COUNT + 1
         while MAX_COUNT - (play_sum + count) < 0:
-            count = input_count(player, play_sum - prev_sum)
-        
+            count = input_count(player, play_sum - prev_sum)                       
+
         if player(True) not in ('bot', 'smartbot'):
-            system('cls')
+            system('cls')                
 
         prev_sum = play_sum
         play_sum += count
