@@ -1,6 +1,7 @@
 #Создайте программу для игры в ""Крестики-нолики"".
-from os import system
 from random import randint
+from os import system
+from View import print_matrix
 
 SIZE = 3
 
@@ -42,9 +43,9 @@ def input_step(play):
         result = play(False)               
     return result
 
-def print_matrix(matrix):
-    system('cls')
-    print('\n'.join([str().join(['{:4}'.format(item) for item in row]) for row in matrix]))
+#def print_matrix(matrix):
+#    system('cls')
+#    print('\n'.join([str().join(['{:4}'.format(item) for item in row]) for row in matrix]))
 
 def finish(matrix):
     symbol = str()
