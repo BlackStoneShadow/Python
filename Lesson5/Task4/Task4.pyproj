@@ -21,10 +21,10 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="model_gen.py">
+    <Compile Include="model_rec.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="model_rec.py">
+    <Compile Include="model_gen.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Task4.py" />
