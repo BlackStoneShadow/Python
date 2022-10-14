@@ -21,6 +21,12 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="control.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="model.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="model_rec.py">
       <SubType>Code</SubType>
     </Compile>
@@ -28,6 +34,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Task4.py" />
+    <Compile Include="view.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="FileDecode.txt" />
