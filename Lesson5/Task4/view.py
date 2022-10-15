@@ -5,4 +5,3 @@ def read_data(file_name):
 def write_data(file_name, text):
     with open(file_name, 'w') as data:
         return data.write(text)
-
