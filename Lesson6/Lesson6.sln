@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
+<<<<<<< HEAD
 VisualStudioVersion = 15.0.28307.902
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Calc", "Calc\Calc.pyproj", "{79670E18-D583-4C9C-9570-B95E84A4B780}"
+=======
+VisualStudioVersion = 15.0.28307.2092
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Calc", "Calc\Calc.pyproj", "{AD7CB768-68AB-4A67-B4F3-79D7569EBFB7}"
+>>>>>>> abad48d2c93d6b07af67e55ea985e0ceb1afa5b0
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,13 +17,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+<<<<<<< HEAD
 		{79670E18-D583-4C9C-9570-B95E84A4B780}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{79670E18-D583-4C9C-9570-B95E84A4B780}.Release|Any CPU.ActiveCfg = Release|Any CPU
+=======
+		{AD7CB768-68AB-4A67-B4F3-79D7569EBFB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD7CB768-68AB-4A67-B4F3-79D7569EBFB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+>>>>>>> abad48d2c93d6b07af67e55ea985e0ceb1afa5b0
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
+<<<<<<< HEAD
 		SolutionGuid = {AB247196-441E-4C79-858A-5CF323F5789B}
+=======
+		SolutionGuid = {510F1D1E-2113-4422-BA76-FC8A2BFD6927}
+>>>>>>> abad48d2c93d6b07af67e55ea985e0ceb1afa5b0
 	EndGlobalSection
 EndGlobal
