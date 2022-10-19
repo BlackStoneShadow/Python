@@ -1,0 +1,15 @@
+{
+    "file": "PhoneBook.json",
+    "data": [
+        {
+            "number": "1",
+            "type": "H",
+            "name": "My"
+        },
+        {
+            "number": "2",
+            "type": "W",
+            "name": "My"
+        }
+    ]
+}

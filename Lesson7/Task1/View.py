@@ -1,4 +1,4 @@
-from Model import Phone_
+from Model import Phone
 from os import system
 
 class Menu:
@@ -28,28 +28,33 @@ class Menu:
         return item
 
 class Input:
+    def __init__(self):
+        system('cls')
+
     def phone(self):
         return input('Phone:')
+
     def type(self):
         return input('Type:')
+
     def name(self):
         return input('Name:')
 
-    def record(self):
-        system('cls')
-        return (self.phone(), self.type(), self.name())
+    def record(self):    
+        return Phone((self.phone(), self.type(), self.name()))
 
 class Print:
-    def record(self, item):
+    def __init__(self):
         system('cls')
 
-        #Item = Phone_(item)
+    def record(self, item):
+        phone = Phone(item)
 
-        print('Phone:', item[0])
-        print('Type:', item[1])
-        print('Name:', item[2])       
+        print('Phone:', phone.number)
+        print('Type:', phone.type)
+        print('Name:', phone.name)       
         
-        input('Press any key')
+        input('Press Enter to continue')
 
     def data(self, data):        
         for item in data:
