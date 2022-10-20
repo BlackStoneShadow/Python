@@ -61,7 +61,7 @@ class PhoneBook:
         return ext
 
     def json(self):        
-        return json.dumps(self, default=vars, sort_keys = False, indent = 4)
+        return json.dumps(self, default=vars, sort_keys = False, indent = 4)        
 
     def load_json(self):
        if exists(self.file):
