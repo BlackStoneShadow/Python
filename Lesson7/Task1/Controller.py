@@ -3,12 +3,14 @@ import View
 
 class Controller:
     def __init__(self):
+        # Выбираем формат хранения
         self.model = Model.PhoneBook('PhoneBook.json')
+        #self.model = Model.PhoneBook('PhoneBook.csv')
 
     def run(self):
         menu = View.Menu('Select menu item:')
         
-        item = 'L'
+        item = '_'
         while item not in ('E'):
             item = menu.item()
 

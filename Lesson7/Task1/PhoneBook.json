@@ -11,5 +11,13 @@
             "type": "W",
             "name": "My"
         }
-    ]
+    ],
+    "load_ioc": {
+        "json": {},
+        "csv": {}
+    },
+    "save_ioc": {
+        "json": {},
+        "csv": {}
+    }
 }
