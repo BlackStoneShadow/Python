@@ -23,7 +23,7 @@ class Phone:
         self.number = item[0]
         self.type   = item[1]
         self.name   = item[2]   
-
+    
 class PhoneBook:
 
     def __init__(self, file_name):
@@ -61,12 +61,12 @@ class PhoneBook:
         return ext
 
     def json(self):        
-        return json.dumps(self, default=vars, sort_keys = False, indent = 4)        
+        return json.dumps(self.data, default=vars, sort_keys = False, indent = 4)        
 
     def load_json(self):
        if exists(self.file):
          with open(self.file) as file:                            
-             data = json.load(file)['data']
+             data = json.load(file)
              for item in data:
                 self.add(Phone(item))
 
@@ -76,6 +76,9 @@ class PhoneBook:
              file_csv = csv.reader(file, delimiter=';')             
              for item in file_csv:
                  self.add(Phone(item))
+    
+    def save(self):
+        self.save_ioc.get(self.format())()
 
     def save_json(self):
         with open(self.file, 'w') as file:
@@ -85,10 +88,7 @@ class PhoneBook:
         with open(self.file, 'w') as file:
             file_csv = csv.writer(file, delimiter=';', lineterminator='\r')
             for item in self.data:
-                file_csv.writerow([item.number, item.type, item.name])
-            
-    def save(self):
-        self.save_ioc.get(self.format())()
+                file_csv.writerow([item.number, item.type, item.name])           
 
     def get_data(self):
         return self.data

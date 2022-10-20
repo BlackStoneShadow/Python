@@ -1,23 +1,12 @@
-{
-    "file": "PhoneBook.json",
-    "data": [
-        {
-            "number": "1",
-            "type": "H",
-            "name": "My"
-        },
-        {
-            "number": "2",
-            "type": "W",
-            "name": "My"
-        }
-    ],
-    "load_ioc": {
-        "json": {},
-        "csv": {}
+[
+    {
+        "number": "2",
+        "type": "W",
+        "name": "My"
     },
-    "save_ioc": {
-        "json": {},
-        "csv": {}
+    {
+        "number": "1",
+        "type": "H",
+        "name": "My"
     }
-}
+]
