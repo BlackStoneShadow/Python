@@ -1,0 +1,11 @@
+[
+    {
+        "fields": {
+            "Snils": "123",
+            "Name": "Test",
+            "Date": "01.01.2000",
+            "Department": "IT",
+            "Phone": "321"
+        }
+    }
+]
