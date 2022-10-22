@@ -5,6 +5,10 @@ from os.path import splitext
 FORMAT_JSON = 'json'
 FIELDS_NAME = 'fields'
 FIELD_SNILS = 'snils'
+FIELD_NAMES = 'name'
+FIELD_DATES = 'date'
+FIELD_DEPAR = 'department'
+FIELD_PHONE = 'phone'
 
 class Employe:   
 
@@ -22,8 +26,11 @@ class Employe:
             for item in data:
                 self.fields[item[0]] = item[1]
 
-    def __call__(self, item):
+    def __getitem__(self, item):
         return self.fields[item]
+
+    def __setitem__(self, item, value):
+        self.fields[item] = value
     
 class Employes:
 
@@ -46,7 +53,7 @@ class Employes:
         for item in self.find(snils):
             self.data.remove(item)
 
-    def find(self, snils):
+    def find(self, snils):                
         return filter(lambda item: Employe(item)[FIELD_SNILS] == snils, self.data)
 
     def format(self):
