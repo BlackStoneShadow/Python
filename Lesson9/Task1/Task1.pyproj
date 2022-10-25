@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>d186f899-5ffd-4922-8f24-bd928bd0b4de</ProjectGuid>
+    <ProjectGuid>d141d479-eea2-4f68-8187-4190e1dd3284</ProjectGuid>
     <ProjectHome>.</ProjectHome>
     <StartupFile>Task1.py</StartupFile>
     <SearchPath>
@@ -11,6 +11,7 @@
     <OutputPath>.</OutputPath>
     <Name>Task1</Name>
     <RootNamespace>Task1</RootNamespace>
+    <InterpreterId>MSBuild|Game|$(MSBuildProjectFullPath)</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,6 +23,20 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Task1.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Interpreter Include="Game\">
+      <Id>Game</Id>
+      <Version>3.6</Version>
+      <Description>Game (Python 3.6 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="requirements.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
