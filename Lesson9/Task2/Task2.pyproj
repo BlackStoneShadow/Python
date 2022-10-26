@@ -2,17 +2,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>d186f899-5ffd-4922-8f24-bd928bd0b4de</ProjectGuid>
+    <ProjectGuid>bccb6350-0429-4e5d-ab01-557328b7afa0</ProjectGuid>
     <ProjectHome>.</ProjectHome>
     <StartupFile>Task2.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>Task1</Name>
-    <RootNamespace>Task1</RootNamespace>
-    <IsWindowsApplication>False</IsWindowsApplication>
+    <Name>Task2</Name>
+    <RootNamespace>Task2</RootNamespace>
     <InterpreterId>MSBuild|Telegram|$(MSBuildProjectFullPath)</InterpreterId>
+    <IsWindowsApplication>False</IsWindowsApplication>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -26,13 +26,10 @@
     <Compile Include="Task2.py" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="requirements.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Interpreter Include="Telegram\">
       <Id>Telegram</Id>
-      <Version>0.0</Version>
-      <Description>Telegram (Python 3.9 (64-bit))</Description>
+      <Version>3.7</Version>
+      <Description>Telegram (Python 3.7 (64-bit))</Description>
       <InterpreterPath>Scripts\python.exe</InterpreterPath>
       <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
       <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
