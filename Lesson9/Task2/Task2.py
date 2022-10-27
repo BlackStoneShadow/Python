@@ -12,13 +12,22 @@ async def all(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text(cnt.menu_all())
 
 async def find(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    await update.message.reply_text(cnt.menu_find(context.args[0]))
+    if len(context.args) == 1:        
+        await update.message.reply_text(cnt.menu_find(context.args[0]))
+    else:
+        await update.message.reply_text('method expects 1 arguments!')
 
 async def new(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    await update.message.reply_text(cnt.menu_add(context.args[0], context.args[1], context.args[2]))
+    if len(context.args) == 3:        
+        await update.message.reply_text(cnt.menu_add(context.args[0], context.args[1], context.args[2]))
+    else:
+        await update.message.reply_text('method expects 3 arguments!')
 
 async def remove(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    await update.message.reply_text(cnt.menu_remove(context.arg[0]))
+    if len(context.args) == 1:        
+        await update.message.reply_text(cnt.menu_remove(context.arg[0]))
+    else:
+        await update.message.reply_text('method expects 1 arguments!')
 
 async def save(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text(cnt.menu_save())
