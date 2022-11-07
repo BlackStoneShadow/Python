@@ -9,10 +9,13 @@ async def menu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text(cnt.menu_view())
 
 async def eval(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    if len(context.args) == 3:        
-        await update.message.reply_text(cnt.menu_eval(context.args[0], context.args[2], context.args[1]))
-    else:
-        await update.message.reply_text('method expects 3 arguments: x (+|-|*|/) y')
+    try:           
+        if len(context.args) == 3: 
+            await update.message.reply_text(cnt.menu_eval(context.args[0], context.args[2], context.args[1]))
+        else:
+            await update.message.reply_text('method expects 3 arguments: x (+|-|*|/) y')
+    except:
+        await update.message.reply_text('error!')
 
 cnt = Controller()
 app = ApplicationBuilder().token("5728522493:AAEmpIKuOU9_iZm-w_b7WVwQ64obtDxynDc").build()
