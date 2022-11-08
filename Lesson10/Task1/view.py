@@ -6,35 +6,25 @@ class Menu:
         self.caption = caption
     
     def view(self):        
-        return '\n'.join((self.caption, '/eval'))        
-
-    def item(self):
-        self.view()
-
-        item = str()
-        while item not in self.items():
-            item = input(self.caption)
-        
-        return item
+        return '\n'.join((self.caption, '/eval (expression)', '/plog (print log)', '/clog (clear log)'))        
 
 class Input:
-    def __init__(self, arg1, arg2, oper):
-        self.value_a = arg1
-        self.value_b = arg2
-        self.value_o = oper
+    def __init__(self, text):
 
-        if 'i' in str(self.value_a) and 'i' in str(self.value_b):
-            self.type_num = model.model_name_kmp
-        elif self.try_cast(self.value_a, int) != None and self.try_cast(self.value_b, int) != None:
+        if re.search('^\d+\.?\d*\s*[\+\-\*\/]\s*\d+\.?\d*$', text) != None:            
+            self.value_a = re.findall('\d+\.?\d*', text)[0]
+            self.value_b = re.findall('\d+\.?\d*', text)[1]
+            self.value_o = text.replace(self.value_a, str()).replace(self.value_b, str()).strip()
+
             self.type_num = model.model_name_rac
+        elif re.search('^\d+\s*[/+/-|]\s*\d+i\s*[\+\-\*\/]\s*\d+\s*[/+/-|]\s*\d+i$', text) != None:
+            self.value_a = re.findall('\d+\s*[/+/-]\s*\d+i', text)[0]
+            self.value_b = re.findall('\d+\s*[/+/-]\s*\d+i', text)[1]
+            self.value_o = text.replace(self.value_a, str()).replace(self.value_b, str()).strip()
+
+            self.type_num = model.model_name_kmp
         else:
             self.type_num = None
-
-    def try_cast(self, value, type):   
-        try:
-            return type(value)
-        except:
-            return None
     
     def get_valua(self):
         return self.value_a
@@ -42,7 +32,7 @@ class Input:
     def get_valub(self):
         return self.value_b
 
-    def get_opera(self):
+    def get_token(self):
         return self.value_o
 
     def get_typen(self):
@@ -54,3 +44,6 @@ class Print:
 
     def view_data(self, data):                
         return (f'{self.title} = {data}')
+
+    def view_log(self, data):                        
+        return (f'{self.title}\n{data}')
