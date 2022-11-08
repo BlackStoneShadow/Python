@@ -4,9 +4,9 @@
         "type": "w",
         "name": "my"
     },
-    [
-        "321",
-        "h",
-        "my"
-    ]
+    {
+        "number": "321",
+        "type": "h",
+        "name": "my"
+    }
 ]
