@@ -30,6 +30,7 @@
     <Compile Include="view.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ReadMe.md" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
