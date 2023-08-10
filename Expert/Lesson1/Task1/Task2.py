@@ -13,12 +13,12 @@ def try_castinput(message, type):
 
     return result
 
-a = try_castinput("Input side a:", int)
-b = try_castinput("Input side b:", int)
-c = try_castinput("Input side c:", int)
+side = tuple([try_castinput("Input side a:", int), try_castinput("Input side b:", int), try_castinput("Input side c:", int)])
 
-#result = [1]
-#for i in range(1, int(number)):
-#    result.append(result[i - 1] * (i + 1))
-
-print(f"{a}, {b}, {c}")
+for i in range(len(side)):    
+    sum = 0
+    for j in range(len(side)):        
+        if i != j:
+            sum += side[j]
+    if side[i] > sum:
+        print(f'Треугольник не существует:{side[i]}>{sum}')
