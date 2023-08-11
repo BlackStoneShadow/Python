@@ -21,4 +21,16 @@ for i in range(len(side)):
         if i != j:
             sum += side[j]
     if side[i] > sum:
-        print(f'Треугольник не существует:{side[i]}>{sum}')
+        input("Треугольник не существует")
+        exit()
+
+message = 'Треугольник разносторонний'                               
+
+for i in range(1, len(side)):    
+    if (side[i-1] == side[i]):
+        if message == "Треугольник равнобедренный":
+            message = "Треугольник равносторонний"                      
+        else:
+            message = "Треугольник равнобедренный"                      
+
+input(message)
