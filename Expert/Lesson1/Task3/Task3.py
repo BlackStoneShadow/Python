@@ -16,9 +16,9 @@ while num == None:
     num = try_castinput("Input number:", int)
     if 100000 < num or num < 0 : num = None
 
-message = "число простое"
+message = "number is simple"
 for i in range(2, num - 1):
     if num % i == 0:
-        message = "число составное"
+        message = "composite number"
 
-input(message)
+print(message)
