@@ -5,7 +5,8 @@
 #num = randint(LOWER_LIMIT, UPPER_LIMIT) 
 from random import randint
 
-LOWER_LIMIT = 0UPPER_LIMIT = 1000
+LOWER_LIMIT = 0
+UPPER_LIMIT = 1000
 STEP_LIMIT  = 10
 
 def try_castinput(message, type):
@@ -16,8 +17,19 @@ def try_castinput(message, type):
     except:
         result = try_castinput(message, type)
 
-    return resultnum = randint(LOWER_LIMIT, UPPER_LIMIT) message = "Incorrectly!"for i in range(STEP_LIMIT):    if try_castinput(f"input number from {LOWER_LIMIT} to {UPPER_LIMIT}:", int) == num:
+    return result
+
+num = randint(LOWER_LIMIT, UPPER_LIMIT) 
+
+message = "Incorrectly!"
+for i in range(STEP_LIMIT):
+    answer = try_castinput(f"input number from {LOWER_LIMIT} to {UPPER_LIMIT}:", int)
+    if answer < num:
+        print("less")       
+    elif answer > num:
+        print("over")
+    else:
         message = "Winner!"
-        break
+        break        
 
 print(message)
