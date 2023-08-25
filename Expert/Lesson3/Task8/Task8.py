@@ -9,7 +9,7 @@ freinds = {
     "Петя": ("плитка", "нож", "кастрюля"),
     "Ваня": ("посуда", "нож", "кружка"),
     "Дима": ("кружка", "нож", "компас", "фонарик")
-    ,"Вася": ("лодка", "нож", "компас", "кружка")    
+    ,"Вася": ("лодка", "нож", "компас", "кружка")        
     }
 
 print(freinds)
@@ -23,12 +23,16 @@ for item in items:
 print(f"все друзья взяли:{things_common}")
 
 #✔ Какие вещи уникальны, есть только у одного друга
-things_unique = list()
-for i in range(len(list(freinds))):
-    for j in range(i + 1, len(list(freinds))):
-        differen = set(freinds[list(freinds)[i]]).difference(set(freinds[list(freinds)[j]]))
-        if differen not in things_unique:
-            things_unique.append(differen)
+items = iter(freinds.values())
+things_unique = set(next(items))
+for item in items:
+    things_unique = set.symmetric_difference(things_unique, set(item))
+
+#for i in range(len(list(freinds))):    
+#    for j in range(i + 1, len(list(freinds))):
+#        differen = set(freinds[list(freinds)[i]]).difference(set(freinds[list(freinds)[j]]))
+#        if differen not in things_unique:
+#            things_unique.append(differen)
 
 print(f"есть только у одного:{things_unique}")
 
