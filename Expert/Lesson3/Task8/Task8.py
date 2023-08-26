@@ -9,7 +9,7 @@ freinds = {
     "Петя": ("плитка", "нож", "кастрюля"),
     "Ваня": ("посуда", "нож", "кружка"),
     "Дима": ("кружка", "нож", "компас", "фонарик")
-    ,"Вася": ("лодка", "нож", "компас", "кружка")        
+    #,"Вася": ("лодка", "нож", "компас", "кружка")        
     }
 
 print(freinds)
@@ -23,21 +23,27 @@ for item in items:
 print(f"все друзья взяли:{things_common}")
 
 #✔ Какие вещи уникальны, есть только у одного друга
-items = iter(freinds.values())
-things_unique = set(next(items))
-for item in items:
-    things_unique = set.symmetric_difference(things_unique, set(item))
+things_unique = dict()
+for i in range(len(list(freinds))):    
+    differen = set()
 
-#for i in range(len(list(freinds))):    
-#    for j in range(i + 1, len(list(freinds))):
-#        differen = set(freinds[list(freinds)[i]]).difference(set(freinds[list(freinds)[j]]))
-#        if differen not in things_unique:
-#            things_unique.append(differen)
+    for j in range(len(list(freinds))):
+        if i != j:
+            differen = differen.union(set(freinds[list(freinds)[i]]).difference(set(freinds[list(freinds)[j]])))    
+
+    for item in differen:
+        if item in things_unique:
+            things_unique[item] += 1
+        else:
+            things_unique[item] = 1
+
+things_unique = set(key for key, value in things_unique.items() if value == 1)
 
 print(f"есть только у одного:{things_unique}")
 
 #✔ Какие вещи есть у всех друзей кроме одного и имя того, у кого данная вещь отсутствует
 things_count = dict()
+
 for i in range(len(list(freinds))):
     for j in range(i + 1, len(list(freinds))):
         common = tuple(set.difference(set(freinds[list(freinds)[i]]).intersection(set(freinds[list(freinds)[j]])), things_common))
