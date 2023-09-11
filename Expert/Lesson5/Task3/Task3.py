@@ -1,0 +1,1 @@
+#Создайте функцию генератор чисел Фибоначчи (см. Википедию).def fibonacci(n: int):    fib1 = fib2 = 1        yield fib1    yield fib2    for i in range(2, n):        fib1, fib2 = fib2, fib1 + fib2        yield fib2n: int = int(input("input number:"))for i in fibonacci(n):    print(i, end=",")
