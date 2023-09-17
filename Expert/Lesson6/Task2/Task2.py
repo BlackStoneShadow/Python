@@ -6,20 +6,17 @@
 #򶀓 Напишите функцию в шахматный модуль. Используйте генератор случайных чисел для
 #случайной расстановки ферзей в задаче выше. Проверяйте различный случайные  варианты и выведите 4 успешных расстановки.
 from random import randint
-from Chess import Board
-from Chess import SIZE
-#проверка поиска не бющаяся расстановка
-print(Board("1X2", "2X4", "3X6", "4X8", "5X3", "6X1", "7X7", "8X5").strike())
+from module import Chess
 #случайный перебор позиций
 for _ in range(4):
     while True:
         positions = list()
-        while len(positions) < SIZE:
-            pos = f"{randint(1, SIZE)}X{randint(1, SIZE)}"
+        while len(positions) < Chess.SIZE:
+            pos = f"{randint(1, Chess.SIZE)}X{randint(1, Chess.SIZE)}"
             if pos not in positions:
                 positions.append(pos)
         
-        board = Board(*positions)
+        board = Chess.Board(*positions)
         if board.strike():
             print(positions)
             break
