@@ -2,9 +2,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.902
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Task1", "Task1\Task1.pyproj", "{752DF6B4-D0B7-4A9A-BEC0-FB43B6F2EF34}"
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Task4", "Task1\Task4.pyproj", "{752DF6B4-D0B7-4A9A-BEC0-FB43B6F2EF34}"
 EndProject
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Task2", "Task2\Task2.pyproj", "{B765730A-15A1-4706-9003-3F29D6D7D2A2}"
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Task1", "Task2\Task1.pyproj", "{B765730A-15A1-4706-9003-3F29D6D7D2A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

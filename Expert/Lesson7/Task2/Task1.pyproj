@@ -2,17 +2,21 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{752df6b4-d0b7-4a9a-bec0-fb43b6f2ef34}</ProjectGuid>
-    <ProjectHome>.</ProjectHome>
+    <ProjectGuid>b765730a-15a1-4706-9003-3f29d6d7d2a2</ProjectGuid>
+    <ProjectHome>
+    </ProjectHome>
     <StartupFile>Task1.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>Task1</Name>
-    <RootNamespace>Task1</RootNamespace>
+    <RootNamespace>Task2</RootNamespace>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <CommandLineArguments>"_new_" "{:03}" ".txt" ".bak" 0 4</CommandLineArguments>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
+    <InterpreterArguments>
+    </InterpreterArguments>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -23,10 +27,22 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="DateTime.py">
+    <Compile Include="module\shfutil.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="module\__init__.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Task1.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="module\" />
+    <Folder Include="Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\File1.txt" />
+    <Content Include="Data\File2.txt" />
+    <Content Include="Data\File3.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
