@@ -89,7 +89,7 @@ def rename(name: str, digit: str, sext: str, dext: str, rang: Tuple[int, int])->
             Path(item).rename(Path(item.parent / f"{item.stem[rang[0]:rang[1]]}{name}{digit.format(count)}").with_suffix(dext))
 
         return True
-    except ValueError:
+    except:
         return False
  
 def generator(ext: str, min_len: int = 6, max_len: int = 30, min_data: int = 256, max_data: int = 4096, count: int = 42)->bool:   
