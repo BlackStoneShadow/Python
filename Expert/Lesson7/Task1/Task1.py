@@ -8,6 +8,10 @@
 #✔ принимать диапазон сохраняемого оригинального имени. Например для диапазона
 #[3, 6] берутся буквы с 3 по 6 из исходного имени файла. К ним прибавляется
 #желаемое конечное имя, если оно передано. Далее счётчик файлов и расширение.
+from sys import path
+#For absolute import, support if __name__ == "__main__"
+path.append('../')
+#Absolute package import
 from module import shfutil
 from sys import argv
 
