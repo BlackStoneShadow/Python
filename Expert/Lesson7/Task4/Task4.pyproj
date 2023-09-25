@@ -14,7 +14,7 @@
     <RootNamespace>Task1</RootNamespace>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
-    <CommandLineArguments>".txt" 6 30 256 4096 10</CommandLineArguments>
+    <CommandLineArguments>"txt" 6 30 256 4096 10</CommandLineArguments>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
