@@ -19,6 +19,7 @@ def fun_gen(num_str: int, file_name: str):
     Минимальное число - -1000, максимальное - +1000. 
     Количество строк и имя файла передаются как аргументы функции. 
     """
+    Path(Path(Path().cwd() / "Data")).mkdir(parents=True, exist_ok=True)
     with open(Path().cwd() / "Data" / file_name, 'a', encoding='utf-8') as f:
         for _ in range(num_str):
             int_num = randint(_MIN_NUMBER, _MAX_NUMBER)
@@ -32,6 +33,7 @@ def func_name(num, new_file):
     среди которых обязательно должны быть гласные. 
     Полученные имена сохраните в файл.
     """
+    Path(Path(Path().cwd() / "Data")).mkdir(parents=True, exist_ok=True)
     with open(Path().cwd() / "Data" / new_file, 'a', encoding='utf-8') as f:
         for _ in range(num):
             res = ''
@@ -51,6 +53,7 @@ def func_sum(file1, file2):
     В результирующем файле должно быть столько же строк, сколько в более длинном файле. 
     При достижении конца более короткого файла, возвращайтесь в его начало.
     """
+    Path(Path(Path().cwd() / "Data")).mkdir(parents=True, exist_ok=True)
     with open(Path().cwd() / "Data" / file1, 'r', encoding='utf-8') as f1:
         with open(Path().cwd() / "Data" / file2, 'r', encoding='utf-8') as f2:
             with open(Path().cwd() / "Data" / 'res.txt','w', encoding='utf-8') as res:
