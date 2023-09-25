@@ -109,11 +109,12 @@ def generator(ext: str, min_len: int = 6, max_len: int = 30, min_data: int = 256
     Task1.py "txt" 6 30 256 4096 1
     """  
     try:
-        ext = '.' + ext
+        ext = '.' + ext        
         for i in range(count):
             name: str = str()
             for _ in range(randint(min_len, max_len)):
-                name += choice(ascii_lowercase)            
+                name += choice(ascii_lowercase)                                         
+            Path(Path(Path().cwd() / "Data")).mkdir(parents=True, exist_ok=True)
             with open(Path(Path().cwd() / "Data" / name).with_suffix(ext), 'bw') as f:
                 f.write(urandom(randint(min_data, max_data)))
 
