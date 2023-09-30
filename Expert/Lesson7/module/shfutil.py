@@ -19,6 +19,7 @@ def fun_gen(num_str: int, file_name: str):
     Минимальное число - -1000, максимальное - +1000. 
     Количество строк и имя файла передаются как аргументы функции. 
     """
+    Path(Path(Path().cwd() / "Data")).mkdir(parents=True, exist_ok=True)
     with open(Path().cwd() / "Data" / file_name, 'a', encoding='utf-8') as f:
         for _ in range(num_str):
             int_num = randint(_MIN_NUMBER, _MAX_NUMBER)
@@ -32,6 +33,7 @@ def func_name(num, new_file):
     среди которых обязательно должны быть гласные. 
     Полученные имена сохраните в файл.
     """
+    Path(Path(Path().cwd() / "Data")).mkdir(parents=True, exist_ok=True)
     with open(Path().cwd() / "Data" / new_file, 'a', encoding='utf-8') as f:
         for _ in range(num):
             res = ''
@@ -51,6 +53,7 @@ def func_sum(file1, file2):
     В результирующем файле должно быть столько же строк, сколько в более длинном файле. 
     При достижении конца более короткого файла, возвращайтесь в его начало.
     """
+    Path(Path(Path().cwd() / "Data")).mkdir(parents=True, exist_ok=True)
     with open(Path().cwd() / "Data" / file1, 'r', encoding='utf-8') as f1:
         with open(Path().cwd() / "Data" / file2, 'r', encoding='utf-8') as f2:
             with open(Path().cwd() / "Data" / 'res.txt','w', encoding='utf-8') as res:
@@ -85,6 +88,8 @@ def rename(name: str, digit: str, sext: str, dext: str, rang: Tuple[int, int])->
     Task2.py "_new_" "{:03}" ".txt" ".bak" 0 4
     """  
     try:
+        sext = '.' + sext
+        dext = '.' + dext
         for count, item in enumerate(filter(lambda i: i.is_file() and i.suffix == sext, Path(Path().cwd() / "Data").iterdir())):            
             Path(item).rename(Path(item.parent / f"{item.stem[rang[0]:rang[1]]}{name}{digit.format(count)}").with_suffix(dext))
 
@@ -104,14 +109,16 @@ def generator(ext: str, min_len: int = 6, max_len: int = 30, min_data: int = 256
     max_data    - максимальное число случайных байт
     count       - количество файлов
     пример вызова:
-    Task1.py ".txt" 6 30 256 4096 1
+    Task1.py "txt" 6 30 256 4096 1
     """  
     try:
+        ext = '.' + ext        
         for i in range(count):
             name: str = str()
             for _ in range(randint(min_len, max_len)):
-                name += choice(ascii_lowercase)            
-            with open(Path(Path().cwd() / "Data" / name).with_suffix('.' + ext), 'bw') as f:
+                name += choice(ascii_lowercase)                                         
+            Path(Path(Path().cwd() / "Data")).mkdir(parents=True, exist_ok=True)
+            with open(Path(Path().cwd() / "Data" / name).with_suffix(ext), 'bw') as f:
                 f.write(urandom(randint(min_data, max_data)))
 
         return True
@@ -125,18 +132,16 @@ def generatorext(**kwargs):
     расширения = количество
     пример:
     txt = 1, pdf = 2
-    """
-    try:
-        for key, items in kwargs.items():
-            generator(ext = key, count = items)
-        return True
-    except:
-        return False
+    """   
+    for key, items in kwargs.items():
+        if not generator(ext = key, count = items):
+            return False
+    return True
 
 if __name__ == "__main__": 
     fun_gen(5, 'new_file.txt')
     func_name(5, 'new_file1.txt')
     func_sum('new_file.txt', 'new_file1.txt')
-    rename("_new_", '{:03}', ".txt", ".bak", (0,4))
+    rename("_new_", '{:03}', "txt", "bak", (0,4))
     generator("txt", 6, 30, 256, 4096, 1)
     generatorext(txt = 1, pdf = 2)
