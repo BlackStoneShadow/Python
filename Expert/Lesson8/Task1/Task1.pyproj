@@ -12,7 +12,7 @@
     <Name>Task1</Name>
     <RootNamespace>Task1</RootNamespace>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <CommandLineArguments>"..\module\Data"</CommandLineArguments>
+    <CommandLineArguments>"ls" "..\module\Data"</CommandLineArguments>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">

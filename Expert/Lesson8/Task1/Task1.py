@@ -13,9 +13,30 @@ from module import shfutil
 from pathlib import Path
 from sys import argv
 
-if len(argv) == 2:
-    print(f"{'Type':<5}{'Size':<5}{'Name'}")
-    for item in shfutil.dir_tree(Path(Path().cwd() / argv[1])):
-        print(f"{item[2]:<5}{item[3]:<5}{Path(Path(item[0])/Path(item[1]))}")
-else:
-    print(help(shfutil.dir_tree))
+if len(argv) == 3 and argv[1] == "ls":
+    shfutil.print_tree(Path(Path().cwd() / argv[2]))
+elif len(argv) == 2 and argv[1] == "ls":
+    print(help(shfutil.print_tree))
+elif len(argv) == 3 and argv[1] == "csv":
+    if shfutil.save_csv(Path(Path().cwd() / argv[2])):
+        print("save in list.csv")
+    else:
+        print("error")
+elif len(argv) == 2 and argv[1] == "csv":
+    print(help(shfutil.save_csv))
+elif len(argv) == 3 and argv[1] == "json":
+    if shfutil.save_json(Path(Path().cwd() / argv[2])):
+        print("save in list.json")
+    else:
+        print("error")
+elif len(argv) == 2 and argv[1] == "json":
+    print(help(shfutil.save_json))
+elif len(argv) == 3 and argv[1] == "bin":
+    if shfutil.save_bin(Path(Path().cwd() / argv[2])):
+        print("save in list.pickle")
+    else:
+        print("error")
+elif len(argv) == 2 and argv[1] == "bin":
+    print(help(shfutil.save_bin))
+else:    
+    print('Task1.py "ls|csv|json|bin" "Dir"')
