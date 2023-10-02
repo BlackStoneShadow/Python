@@ -66,11 +66,11 @@ def save_csv(name: str)->bool:
     """
     try:
         with open(Path(name) / "list.csv", "w", newline="", encoding="utf-8") as f:
-            names=("name", "type", "size")
+            names=("dir", "name", "type", "size")
             csv_writer = csv.DictWriter(f, fieldnames=list(names), dialect="excel-tab", quoting=csv.QUOTE_NONNUMERIC)        
             csv_writer.writeheader()
             for item in tree(name):
-                csv_writer.writerow(dict(zip(names, (Path(Path(item[0]) / Path(item[1])), item[2], item[3]))))
+                csv_writer.writerow(dict(zip(names, (item[0], item[1], item[2], item[3]))))
         
         return True
     except:
@@ -88,7 +88,7 @@ def save_json(name: str)->bool:
     """
     try:
         with open(Path(name) / "list.json", "w", encoding="utf-8") as f:
-            json.dump({str(Path(Path(item[0]) / Path(item[1]))) : (item[2], item[3]) for item in tree(name)}, f, ensure_ascii=False)
+            json.dump({str(Path(Path(item[0]) / Path(item[1]))) : (item[0], item[1], item[2], item[3]) for item in tree(name)}, f, ensure_ascii=False)
 
         return True
     except:
@@ -106,7 +106,7 @@ def save_bin(name: str)->bool:
     """
     try:
         with open(Path(name) / "list.pickle", "wb") as f: 
-            pickle.dump({str(Path(Path(item[0]) / Path(item[1]))) : (item[2], item[3]) for item in tree(name)}, f)
+            pickle.dump({str(Path(Path(item[0]) / Path(item[1]))) : (item[0], item[1], item[2], item[3]) for item in tree(name)}, f)
         
         return True
     except:
