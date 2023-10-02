@@ -4,7 +4,7 @@ VisualStudioVersion = 15.0.28307.902
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Task1", "Task1\Task1.pyproj", "{752DF6B4-D0B7-4A9A-BEC0-FB43B6F2EF34}"
 EndProject
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Task2", "Task2\Task2.pyproj", "{AC30BF19-05AB-48FE-8804-80484C054A39}"
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Task5", "Task2\Task5.pyproj", "{AC30BF19-05AB-48FE-8804-80484C054A39}"
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "module", "module\module.pyproj", "{B2526137-FD13-43FE-BF86-97CE724C56DC}"
 EndProject

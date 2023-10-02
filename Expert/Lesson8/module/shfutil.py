@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import TypeVar
 from typing import List
 
-__all__ = ['print_tree', 'save_csv']
+__all__ = ['print_tree', 'save_csv', 'save_json', 'save_bin']
  
 def tree(name: str)->List[TypeVar(str, str, str, float)]:
     """
@@ -42,7 +42,7 @@ def print_tree(name: str)->bool:
     name    - корневая директория
 
     пример вызова:
-    Task1.py "Data"
+    Task1.py "ls" "Data"
     """
     try:
         print(f"{'Type':<5}{'Size':<5}{'Name'}")
@@ -65,7 +65,7 @@ def save_csv(name: str)->bool:
     Task1.py "csv" "Data"
     """
     try:
-        with open(Path().cwd() / "list.csv", "w", newline="", encoding="utf-8") as f:
+        with open(Path(name) / "list.csv", "w", newline="", encoding="utf-8") as f:
             names=("name", "type", "size")
             csv_writer = csv.DictWriter(f, fieldnames=list(names), dialect="excel-tab", quoting=csv.QUOTE_NONNUMERIC)        
             csv_writer.writeheader()
@@ -87,7 +87,7 @@ def save_json(name: str)->bool:
     Task1.py "json" "Data"
     """
     try:
-        with open(Path().cwd() / "list.json", "w", encoding="utf-8") as f:
+        with open(Path(name) / "list.json", "w", encoding="utf-8") as f:
             json.dump({str(Path(Path(item[0]) / Path(item[1]))) : (item[2], item[3]) for item in tree(name)}, f, ensure_ascii=False)
 
         return True
@@ -105,9 +105,32 @@ def save_bin(name: str)->bool:
     Task1.py "bin" "Data"
     """
     try:
-        with open(Path().cwd() / "list.pickle", "wb") as f: 
+        with open(Path(name) / "list.pickle", "wb") as f: 
             pickle.dump({str(Path(Path(item[0]) / Path(item[1]))) : (item[2], item[3]) for item in tree(name)}, f)
         
+        return True
+    except:
+        return False
+
+def convert_jsontobin(name: str)->bool:
+    """
+    функция преобразования файлов json в двоичный формат
+
+    параметры:
+    name    - корневая директория
+
+    пример вызова:
+    Task5.py "Data"
+    """
+    try:
+        sext: str = '.' + 'json'
+        dext: str = '.' + 'pickle'
+        for item in filter(lambda i: i.is_file() and i.suffix == sext, Path(name).iterdir()):                        
+            with open(str(item), 'r') as f:
+                data = json.loads(f.read())
+                with open(Path(item.parent / item.name).with_suffix(dext), "wb") as f:
+                    pickle.dump(data, f)
+
         return True
     except:
         return False
@@ -117,3 +140,4 @@ if __name__ == "__main__":
     save_csv(Path().cwd() / "Data")
     save_json(Path().cwd() / "Data")
     save_bin(Path().cwd() / "Data")
+    convert_jsontobin(Path().cwd() / "Data")
