@@ -5,7 +5,7 @@
     <ProjectGuid>b765730a-15a1-4706-9003-3f29d6d7d2a2</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>Task1.py</StartupFile>
+    <StartupFile>TaskAT.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -13,7 +13,7 @@
     <Name>Task1</Name>
     <RootNamespace>Task1</RootNamespace>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <CommandLineArguments>"100"</CommandLineArguments>
+    <CommandLineArguments>"input_data.csv"</CommandLineArguments>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
     <InterpreterArguments>
     </InterpreterArguments>
@@ -28,6 +28,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Task1.py" />
+    <Compile Include="TaskAT.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
