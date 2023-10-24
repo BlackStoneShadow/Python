@@ -11,7 +11,7 @@ class Matrix:
         for row in self.data:
             result += " ".join(map(str, row)) + "\n"
 
-        return (result + "\n").replace("\n\n", "")
+        return result
 
     def __repr__(self):
         return f"Matrix({len(self.data)}, {len(self.data[0])})"
@@ -41,6 +41,10 @@ class Matrix:
             result = Matrix(self.rows, other.cols)
             result.data = [[sum(a * b for a, b in zip(row, col)) for col in zip(*other.data)] for row in self.data]
 
+            matrix = Matrix(self.rows, other.cols)
+            matrix.data = [[tuple(str(a) + 'x' + str(b) for a, b in zip(row, col)) for col in zip(*other.data)] for row in self.data]
+            print(matrix)            
+            
         return result
 
 
@@ -71,6 +75,9 @@ if __name__ == "__main__":
 
     matrix4 = Matrix(2, 2)
     matrix4.data = [[7, 8], [9, 10]]
+
+    print(matrix3)
+    print(matrix4)
 
     result = matrix3 * matrix4
     print(result)
