@@ -26,26 +26,97 @@ class Name:
         elif not (str(value).isalpha or str(value).istitle):
             raise AttributeError("ФИО должно состоять только из букв и начинаться с заглавной буквы")
 
+class Range:
+    def __init__(self, min_value: int = None, max_value: int = None):
+        self.min_value = min_value
+        self.max_value = max_value
+
+    def __set_name__(self, owner, name):
+        self.param_name = '_' + name
+
+    def __get__(self, instance, owner):
+        return getattr(instance, self.param_name)
+
+    def __set__(self, instance, value):
+        self.validate(value)
+        setattr(instance, self.param_name, value)
+
+    def validate(self, value):
+        if not isinstance(value, int):
+            raise AttributeError(f'Свойство "{self.param_name}" должно быть целым числом')
+        elif self.min_value is not None and value < self.min_value:
+            raise AttributeError("значение {value} должно быть больше или равно {self.min_value}")
+        elif self.max_value is not None and value > self.max_value:
+            raise AttributeError("значение {value} должно не привышвть {self.max_value}")
+
 class Student:
     name = Name()
     subjects = dict()
 
+    __grade = Range(2, 5)
+    __test_scope = Range(0, 100)
+
     def __init__(self, name, subjects_file):
         self.name = name
         self.subjects = self.load_subjects(subjects_file);
+
+    def __getattr__(self, name):
+        if name in self.subjects:
+            return self.subjects[name]
+        else:
+            raise AttributeError(f"Предмет {name} не найден")
+
+    def __setattr__(self, name, value):
+        super().__setattr__(name, value)
+
+    def add_grade(self, subject, grade):
+        if subject in self.subjects:
+            self.__grade = grade
+            self.subjects[subject]['grades'].append(grade)
+        else:
+            raise AttributeError(f"Предмет {subject} не найден")
+
+    def  add_test_score(self, subject, test_score):
+        if subject in self.subjects:
+            self.__test_scope = test_score
+            self.subjects[subject]['test_scores'].append(test_score)
+        else:
+            raise AttributeError(f"Предмет {subject} не найден")
+
+    def get_average_grade(self):
+        return (avg(item) for item in self.subjects)
+
+    def get_average_test_score(self, subject):
+        if subject in self.subjects:
+            return avg(self.subjects[subject])
+        else:
+            raise AttributeError(f"Предмет {subject} не найден")
     
     def load_subjects(self, subjects_file):
         result = dict()
 
         with open(subjects_file, "r", encoding="utf-8") as f:        
-            csv_reader = csv.reader(f, delimiter=',')
-            result = {item:0 for item in list(*[col for col in [row for row in csv_reader]])}
+            csv_reader = csv.reader(f, delimiter=",")            
+            result = {item:{"grades": [], "test_scores": []} for item in [col for col in [row for row in csv_reader]][0]}
         
         return result
 
-    #def __str__(self):
-    #    return f"{super(MyStr, self).__str__()} (Автор: {self.author}, Время создания: {self.time.strftime('%Y-%m-%d %H:%M')})"
+    def __str__(self):
+        return f'Студент: {self.name}\nПредметы: {", ".join(self.subjects.keys())}'
 
 if __name__ == "__main__": 
-    student = Student('Иванов Петя', 'subjects.csv')
+    student = Student("Иван Иванов", "subjects.csv")
+
+    student.add_grade("Математика", 4)
+    student.add_test_score("Математика", 85)
+
+    student.add_grade("История", 5)
+    student.add_test_score("История", 92)
+
+    average_grade = student.get_average_grade()
+    print(f"Средний балл: {average_grade}")
+
+    average_test_score = student.get_average_test_score("Математика")
+    print(f"Средний результат по тестам по математике: {average_test_score}")
+
     print(student)
