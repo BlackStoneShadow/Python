@@ -1,5 +1,6 @@
 import unittest
 
+
 class NegativeValueError(ValueError):
     pass
 
@@ -57,6 +58,7 @@ class Rectangle:
         perimeter = self.perimeter() - other.perimeter()
         height = perimeter / 2 - width
         return Rectangle(width, height)
+
 
 class TestRectangle(unittest.TestCase):
     def test_width(self):
