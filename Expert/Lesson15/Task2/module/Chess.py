@@ -1,3 +1,7 @@
+from logging import basicConfig
+from logging import getLogger
+from logging import INFO
+
 __all__ = ['SIZE', 'Board']
 
 SIZE = 8
@@ -5,6 +9,7 @@ SIZE = 8
 class Board:
     def __init__(self, *args):
         self.positions = args        
+        self.logger = getLogger(__name__)
 
     def strike(self)->bool:
         for pos in self.positions:         
@@ -18,9 +23,12 @@ class Board:
                 if x-i > 0 and y-i > 0:
                     strikes.append(f"{x-i}X{y-i}")
             for item in self.positions:
-                if item != pos and item in strikes:
+                if item != pos and item in strikes:                    
                     return False
+        self.logger.info(self.positions)            
         return True
+
+basicConfig(format="{asctime:<25}{levelname:<8}{name:<15}{msg}", style="{", filename="Matchs.log", filemode="w", level=INFO)
 
 if __name__ == "__main__":
     #проверка поиска не бющаяся расстановка

@@ -10,7 +10,9 @@
 #операцией, даже ошибочной
 #✔ Любое действие выводит сумму денег
 from os import system
-import logging
+from logging import basicConfig
+from logging import getLogger
+from logging import INFO
 
 STEP = 3
 MULT = 50
@@ -24,8 +26,8 @@ SMAX = 5_000_000
 count: int = 0
 balance: float = 0 
 
-logging.basicConfig(format="{levelname:<8}{name:<4}{msg}", style="{", filename="InOut.log", filemode="w", level=logging.INFO)
-logger = logging.getLogger("ATM")
+basicConfig(format="{asctime:<25}{levelname:<8}{name:<4}{msg}", style="{", filename="InOut.log", filemode="w", level=INFO)
+logger = getLogger("ATM")
 
 def try_castinput(message, type):
     result = str()
