@@ -11,9 +11,9 @@ from logging import INFO
 from module import ApplicationExceptions
 
 class User:
-    def __init__(self, name, level, user_id):
-        self.user_name = name
-        self.user_level = level
+    def __init__(self, user_name, user_level, user_id):
+        self.user_name = user_name
+        self.user_level = user_level
         self.user_id = user_id    
     
     def __repr__(self) -> str:
@@ -47,8 +47,8 @@ class ProjectUser:
                 levels = json.load(f)      
 
             for level, value in levels.items():
-                for i in range(len(value)):
-                    self.users.add(User(value[i]['user_name'], value[i]['user_level'], value[i]['user_id']))        
+                for item in value:                    
+                    self.users.add(User(**item))   
         except:
             self.users.add(User('root', '0', '0'))
 
