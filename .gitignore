@@ -361,6 +361,9 @@ ASALocalRun/
 # Local History for Visual Studio
 .localhistory/
 
+# Python enviromaent
+.env
+
 # Visual Studio History (VSHistory) files
 .vshistory/
 
