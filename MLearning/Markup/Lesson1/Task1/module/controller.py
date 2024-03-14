@@ -34,4 +34,4 @@ class Foursquare:
 if __name__ == "__main__":    
     foursquare = Foursquare(API_KEY=os.getenv("API_KEY"), category="coffee")
     if(foursquare.status):          
-        pprint(foursquare.dict)
+        pprint(foursquare.data)
