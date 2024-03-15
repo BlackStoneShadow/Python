@@ -11,7 +11,7 @@
     <OutputPath>.</OutputPath>
     <Name>Task1</Name>
     <RootNamespace>Task1</RootNamespace>
-    <InterpreterId>MSBuild|env32|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
     <IsWindowsApplication>False</IsWindowsApplication>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
