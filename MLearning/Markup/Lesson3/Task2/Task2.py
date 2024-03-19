@@ -8,7 +8,7 @@ from clickhouse_driver import Client
 class Books:
     def __init__(self, **kwarg):                
         self.__client__ = Client(host = kwarg["host"], port=kwarg["port"], user="default", secure=False, settings={'use_numpy': True})
-        
+
         self.__client__.execute('''
         CREATE TABLE IF NOT EXISTS books
         (
