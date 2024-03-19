@@ -8,16 +8,17 @@ from clickhouse_driver import Client
 class Books:
     def __init__(self, **kwarg):                
         self.__client__ = Client(host = kwarg["host"], port=kwarg["port"], user="default", secure=False, settings={'use_numpy': True})
-        self.__client__.execute("DROP TABLE IF EXISTS books")
+        
         self.__client__.execute('''
-        CREATE TABLE books
+        CREATE TABLE IF NOT EXISTS books
         (
             `id`    UInt16,
             `name`  String,
             `count` UInt16,
-            `price` String
+            `price` String,
+            PRIMARY KEY(`id`) 
         )
-        ENGINE = MergeTree
+        ENGINE = ReplacingMergeTree(id)
         ORDER BY id;
         ''')
 
@@ -45,8 +46,8 @@ if __name__ == "__main__":
     books = Books(host="ubuntu", port=9000)    
     books.load("list.json")
 
-    for item in books.execute("SELECT * FROM books"):
+    for item in books.execute("SELECT * FROM books WHERE name='Frankenstein'"):
         pprint(item)
 
-    for item in books.execute("SELECT MAX(count), AVG(count) FROM books"):
+    for item in books.execute("SELECT MAX(count), AVG(count), SUM(count), COUNT(*) FROM books"):
         pprint(item)
