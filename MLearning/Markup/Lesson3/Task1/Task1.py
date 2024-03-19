@@ -1,4 +1,5 @@
 import json
+import hashlib
 from pprint import pprint
 from pathlib import Path
 from pymongo import MongoClient
@@ -12,9 +13,12 @@ class Books:
             count = 0
             books = json.load(f)            
             for item in books: 
-                book = item[0]
-                try:        
+                book = item[0]                
+                try:                                                
+                    book["_id"] = int(hashlib.md5(book["name"].encode('utf-8')).hexdigest()[:8], 16)
+                    
                     self.__db__.books.insert_one(book)    
+                    
                     count += 1
                 except Exception as e:
                     pass
@@ -24,7 +28,7 @@ class Books:
         return self.__db__.books.find(query)
 
 if __name__ == "__main__":
-    books = Books(connectStr="mongodb://192.168.1.99:27017")    
+    books = Books(connectStr="mongodb://ubuntu:27017")    
     books.load("list.json")
 
     for item in books.find({"name": {"$regex":"[Ll]ight"}}):
