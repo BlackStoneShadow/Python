@@ -74,7 +74,9 @@ class CBR:
         result = []
         if self.status:
             iiter = iter(self.data)
+            #пропускаем заголовок таблицы
             next(iiter)
+            #разбираем тадличную часть
             for item in iiter:
                 try:
                     result.append({
