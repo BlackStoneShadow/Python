@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>182841f1-9eca-49e3-b3ba-68f42d9ecd52</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>module\controller.py</StartupFile>
+    <StartupFile>Task1.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -12,6 +12,10 @@
     <Name>Task1</Name>
     <RootNamespace>Task1</RootNamespace>
     <InterpreterId>MSBuild|env64|$(MSBuildProjectFullPath)</InterpreterId>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <CommandLineArguments>
+    </CommandLineArguments>
+    <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,6 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="module\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ReadMe.md" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
