@@ -1,4 +1,3 @@
-import re
 import requests
 from fake_useragent import UserAgent
 from typing import TypeVar
@@ -9,11 +8,20 @@ from datetime import datetime
 from datetime import timedelta
 
 class CBR:
+    """
+    Загрузка курсов валют центрабанка России
+
+    Атрибуты:
+    - url (str): ширина прямоугольника
+    - status (bool): высота прямоугольника
+    - date(datetime): дата курса
+    - price(list): спсиок курсов валют
+    """
     def __init__(self, **kwarg):
         self.__page__ = 0
         self.__session__ = None
 
-        self.__dateBegin__ = self.__date__ = datetime.strptime(kwarg["dateBegin"], "%d.%m.%Y")
+        self.__date__ = datetime.strptime(kwarg["dateBegin"], "%d.%m.%Y") - timedelta(days=1)
         self.__dateEnd__ = datetime.strptime(kwarg["dateEnd"], "%d.%m.%Y")
 
     def _response_(self, url):
@@ -29,12 +37,12 @@ class CBR:
         return self
 
     def __next__(self):                
-        self.__response__ = self._response_(self.url)        
-        
-        if self.__date__ == self.__dateEnd__:
-            raise StopIteration        
-
         self.__date__ += timedelta(days=1)
+
+        if self.__date__ > self.__dateEnd__:
+            raise StopIteration               
+
+        self.__response__ = self._response_(self.url)               
 
         return self
 
@@ -61,27 +69,31 @@ class CBR:
             tree = html.fromstring(self.text)    
             return tree.xpath("//table[@class='data']//descendant::tr")        
 
-    @property
+    @property    
     def price(self)->List[TypeVar(int, str, int, str, float)]:
         result = []
         if self.status:
             iiter = iter(self.data)
+            #пропускаем заголовок таблицы
             next(iiter)
+            #разбираем тадличную часть
             for item in iiter:
                 try:
                     result.append({
+                        "date"  : self.date.strftime("%d.%m.%Y"),
+
                         "id"    : int(item[0].text),
                         "code"  : str(item[1].text),
                         "unit"  : int(item[2].text),
                         "name"  : str(item[3].text),
                         "price" : float(item[4].text.replace(",", ".")),
-                        "date"  : self.date.strftime("%d.%m.%Y"),
                         })
                 except ValueError as error:
                     result.append({
+                        "date"  : self.date.strftime("%d.%m.%Y"),
+
                         "id"    : int(item[0].text),
                         "code"  : str(item[1].text),
-                        "date"  : self.date.strftime("%d.%m.%Y"),
                         "name"  : error,
                         })
 
