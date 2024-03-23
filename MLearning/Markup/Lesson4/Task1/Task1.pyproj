@@ -11,7 +11,8 @@
     <OutputPath>.</OutputPath>
     <Name>Task1</Name>
     <RootNamespace>Task1</RootNamespace>
-    <InterpreterId>MSBuild|env64|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|env32|$(MSBuildProjectFullPath)</InterpreterId>
+    <IsWindowsApplication>False</IsWindowsApplication>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -29,6 +30,15 @@
     <Compile Include="Task1.py" />
   </ItemGroup>
   <ItemGroup>
+    <Interpreter Include="env32\">
+      <Id>env32</Id>
+      <Version>3.6</Version>
+      <Description>env32 (Python 3.6 (32-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X86</Architecture>
+    </Interpreter>
     <Interpreter Include="env64\">
       <Id>env64</Id>
       <Version>3.6</Version>
