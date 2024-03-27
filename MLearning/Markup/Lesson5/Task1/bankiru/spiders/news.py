@@ -30,7 +30,7 @@ class NewsSpider(scrapy.Spider):
             date = None
         
         try:
-            text = response.xpath('//div[@id="article"]//child::p/text()').getall()        
+            text = response.xpath('.//div[@id="article"]//child::p/text()').getall()
             text = str().join(_ for _ in text).strip()
         except ValueError as e:
             text = None            
