@@ -36,7 +36,7 @@ class NewsSpider(scrapy.Spider):
             text = None            
         
         yield {
-            "article" : response.request.meta["article_name"],
             "date"    : date,
+            "article" : response.request.meta["article_name"],
             "text"    : text,
         }
