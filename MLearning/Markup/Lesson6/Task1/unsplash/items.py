@@ -1,12 +1,26 @@
-# Define here the models for your scraped items
-#
-# See documentation in:
-# https://docs.scrapy.org/en/latest/topics/items.html
+from scrapy.item import Item, Field
+from itemloaders.processors import TakeFirst, MapCompose
 
-import scrapy
+def process_kind(value:str)->str:
+    if value.startswith("http"):
+        return value.split('/')[3]
 
+def process_image(value:str)->str:        
+    index = [v[:-1] for k,v in enumerate(value.split()) if k % 2 != 0]
+    value = [v for k,v in enumerate(value.split()) if k % 2 == 0]
 
-class UnsplashItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    data = {k:v for k,v in zip(index, value)}
+
+    result = data.get("1470w")
+
+    if result is None:
+        result = value[-1] 
+
+    return result
+
+class UnsplashItem(Item):    
+    name = Field(output_processor=TakeFirst())
+    url = Field(output_processor=TakeFirst())    
+    kind = Field(input_processor=MapCompose(process_kind), output_processor=TakeFirst(),)    
+    image_urls = Field(input_processor=MapCompose(process_image))    
+    path = Field(output_processor=TakeFirst())
