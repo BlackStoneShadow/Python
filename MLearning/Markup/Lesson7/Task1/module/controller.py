@@ -101,8 +101,8 @@ class Scrapy:
 
             if len(items) == count:
                 break
-
-            for item in self.data:
+            exist = set()
+            for item in self.data:                
                 name = item.find(name="span",attrs={'class':'product-card__name'}).get_text().replace("/", "").strip()                
                 link = item.find(name="a",attrs={'class':'product-card__link j-card-link j-open-full-product-card'}).get("href")
                 try:
@@ -110,11 +110,13 @@ class Scrapy:
                 except ValueError as E:
                     price = None
 
-                result.append({
-                    "name": name, 
-                    "price": price,
-                    "url": link,
-                    })
+                if link not in exist:
+                    result.append({
+                        "name": name, 
+                        "price": price,
+                        "url": link,
+                        })
+                    exist.add(link)
 
         return result
 

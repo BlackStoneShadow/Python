@@ -1,1 +1,0 @@
-python task1.py -s "IPhone 15 Pro MAX" -f result.csv
