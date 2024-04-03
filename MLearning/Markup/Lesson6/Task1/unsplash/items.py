@@ -1,6 +1,10 @@
 from scrapy.item import Item, Field
 from itemloaders.processors import TakeFirst, MapCompose
 
+def process_kind(value:str)->str:
+    if value.startswith("http"):
+        return value.split('/')[3]
+
 def process_image(value:str)->str:        
     index = [v[:-1] for k,v in enumerate(value.split()) if k % 2 != 0]
     value = [v for k,v in enumerate(value.split()) if k % 2 == 0]
@@ -17,6 +21,6 @@ def process_image(value:str)->str:
 class UnsplashItem(Item):    
     name = Field(output_processor=TakeFirst())
     url = Field(output_processor=TakeFirst())    
-    kind = Field(output_processor=TakeFirst(),)    
+    kind = Field(input_processor=MapCompose(process_kind), output_processor=TakeFirst(),)    
     image_urls = Field(input_processor=MapCompose(process_image))    
     path = Field(output_processor=TakeFirst())
