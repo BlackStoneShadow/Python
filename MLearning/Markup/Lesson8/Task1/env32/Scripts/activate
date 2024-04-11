@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="D:\Project\GeekBrains\Python\MLearning\Markup\Lesson8\Task1\env32"
+VIRTUAL_ENV="W:\Python\MLearning\Markup\Lesson8\Task1\env32"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

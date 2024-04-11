@@ -1,5 +1,5 @@
 @echo off
-set "VIRTUAL_ENV=D:\Project\GeekBrains\Python\MLearning\Markup\Lesson8\Task1\env32"
+set "VIRTUAL_ENV=W:\Python\MLearning\Markup\Lesson8\Task1\env32"
 
 if not defined PROMPT (
     set "PROMPT=$P$G"
