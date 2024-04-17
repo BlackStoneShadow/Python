@@ -366,6 +366,7 @@ ASALocalRun/
 
 # Python enviromaent
 .env
+.ipynb_checkpoints
 
 # Visual Studio History (VSHistory) files
 .vshistory/
