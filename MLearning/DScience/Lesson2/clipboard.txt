@@ -1,0 +1,8 @@
+mses = []
+lstat_coef = range(-20, 23)
+
+for coef in lstat_coef:
+    pred_values = np.array([coef * lstat for lstat in boston_df.LSTAT.values])
+    mses.append(np.sum((target - pred_values)**2))
+    
+plt.plot(lstat_coef, mses);
