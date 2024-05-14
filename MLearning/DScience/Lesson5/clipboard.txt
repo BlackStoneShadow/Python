@@ -1,1 +1,0 @@
- data["FareCat"] = pd.cut(data['Fare'], bins=[data['Fare'].min(), 25, 50, 100, 150, data['Fare'].max()], labels=False) 
