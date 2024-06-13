@@ -57,7 +57,4 @@ R2 - коэффициент детерминации (sklearn.metrics.r2_score)
 в последующих курсах, поэтому в этом проекте его применять не следует.
 Самая сложная из допустимых моделей - RandomForestRegressor из sklearn.
 
-
-
-
-
+https://www.kaggle.com/code/jardpranov/python
