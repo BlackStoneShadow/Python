@@ -1,4 +1,1 @@
-{'criterion': 'friedman_mse',
- 'max_depth': 9,
- 'max_features': 7,
- 'n_estimators': 70}
+centers = scaler.inverse_transform(model.cluster_centers_)
