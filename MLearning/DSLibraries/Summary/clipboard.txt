@@ -1,1 +1,1 @@
-centers = scaler.inverse_transform(model.cluster_centers_)
+data["AgeCat"] = pd.cut(data['Age'], bins=[data['Age'].min(), 18, 25, 30, 38, 45, 60, data['Age'].max()], labels=False)
