@@ -56,5 +56,3 @@ R2 - коэффициент детерминации (sklearn.metrics.r2_score)
 которые были в курсе Python для Data Science. Градиентный бустинг изучается
 в последующих курсах, поэтому в этом проекте его применять не следует.
 Самая сложная из допустимых моделей - RandomForestRegressor из sklearn.
-
-https://www.kaggle.com/code/jardpranov/python
