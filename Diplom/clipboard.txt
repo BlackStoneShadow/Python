@@ -28,8 +28,6 @@ $ /bin/sh /usr/local/sbin/start_docker.sh
 docker build -t targetpay .
 
 # Запуск
-docker run -p 8080:8080 targetpay
+docker run -d -p 8080:8080 targetpay
 # Доступ из вне
-netsh interface portproxy add v4tov4 listenport=<локальный порт на котором ожидается соединение> listenaddress=<локальный адрес на котором ожидается соединение, или 0.0.0.0 для всех адресов> connectport=<порт назначения, на котором болтается твой сервер> connectaddress=<адрес назначения, на котором болтается твой сервер>
 netsh interface portproxy add v4tov4 listenport=8080 listenaddress=192.168.17.199 connectport=8080 connectaddress=127.0.0.1
-netsh interface portproxy delete v4tov4 8080 192.168.17.199
