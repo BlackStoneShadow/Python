@@ -36,7 +36,7 @@ class DataFrame(pd.DataFrame):
     
 class DataPipeline:     
     def __init__(self, **kwargs):
-        """Инициализация класса"""                 
+        """Инициализация класса"""                       
         # уровень стат значимости
         self.alpha = 0.05
         # срнднйи уровень корреляции
@@ -48,7 +48,7 @@ class DataPipeline:
         # пропорции деления набора
         self.test_size = 0.33
         # кодировщики
-        self.__encoders__ = dict()
+        self.__encoders__ = dict()        
         
         # параметры класса
         for key, value in kwargs.items():
