@@ -1,0 +1,54 @@
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 15240 entries, 0 to 15239
+Data columns (total 47 columns):
+ #   Column                                            Non-Null Count  Dtype  
+---  ------                                            --------------  -----  
+ 0   DateTime                                          15240 non-null  object 
+ 1   Person_Id                                         15240 non-null  int64  
+ 2   Contract_Id                                       15240 non-null  int64  
+ 3   Account_Id                                        15240 non-null  int64  
+ 4   AccountPart_Id                                    15240 non-null  int64  
+ 5   Instrument_Id                                     15240 non-null  int64  
+ 6   Quantity                                          15240 non-null  object 
+ 7   Number                                            15240 non-null  object 
+ 8   ExternalAccount                                   15107 non-null  object 
+ 9   Comments                                          15237 non-null  object 
+ 10  ДатаДокумента                                     8273 non-null   object 
+ 11  ВидДокумента                                      8273 non-null   object 
+ 12  ВидОперации                                       8273 non-null   object 
+ 13  НомерВходящегоДокумента                           8273 non-null   float64
+ 14  ДатаВходящегоДокумента                            8273 non-null   object 
+ 15  СуммаДокумента                                    8273 non-null   object 
+ 16  ВалютаДокумента                                   8273 non-null   object 
+ 17  СчетБанк                                          8273 non-null   float64
+ 18  СчетОрганизации                                   8273 non-null   object 
+ 19  СчетОрганизацииНомерСчета                         8273 non-null   object 
+ 20  СчетОрганизацииБанк                               8273 non-null   object 
+ 21  Контрагент                                        5166 non-null   object 
+ 22  КонтрагентИНН                                     5156 non-null   float64
+ 23  СчетКонтрагента                                   3498 non-null   object 
+ 24  СчетКонтрагентаНомерСчета                         3498 non-null   object 
+ 25  СчетКонтрагентаБанк                               3498 non-null   object 
+ 26  СчетУчетаРасчетовСКонтрагентом                    7885 non-null   object 
+ 27  СубконтоДт1                                       5474 non-null   object 
+ 28  СубконтоДт2                                       5323 non-null   object 
+ 29  СубконтоДт3                                       4739 non-null   object 
+ 30  СубконтоДт4                                       4717 non-null   object 
+ 31  СубконтоДт5                                       0 non-null      float64
+ 32  СтатьяДвиженияДенежныхСредств                     8273 non-null   object 
+ 33  ЦеннаяБумага                                      163 non-null    object 
+ 34  НоменклатурнаяГруппа                              4889 non-null   object 
+ 35  НазначениеПлатежа                                 8273 non-null   object 
+ 36  ДоговорКонтрагентаРасшифровкаПлатежа              410 non-null    object 
+ 37  СтатьяДвиженияДенежныхСредствРасшифровкаПлатежа   8098 non-null   object 
+ 38  СуммаПлатежаРасшифровкаПлатежа                    8185 non-null   object 
+ 39  СтавкаНДСРасшифровкаПлатежа                       5308 non-null   object 
+ 40  СуммаНДСРасшифровкаПлатежа                        8185 non-null   object 
+ 41  СчетУчетаРасчетовСКонтрагентомРасшифровкаПлатежа  410 non-null    float64
+ 42  СчетУчетаРасчетовПоАвансамРасшифровкаПлатежа      399 non-null    float64
+ 43  СчетНаОплатуРасшифровкаПлатежа                    36 non-null     object 
+ 44  НоменклатурнаяГруппаРасшифровкаПлатежа            4903 non-null   object 
+ 45  ЦеннаяБумагаРасшифровкаПлатежа                    16 non-null     object 
+ 46  СтрокаНайдена                                     15240 non-null  object 
+dtypes: float64(6), int64(5), object(36)
+memory usage: 5.5+ MB
