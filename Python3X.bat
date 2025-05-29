@@ -1,0 +1,2 @@
+PATH=C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python3X_64\Scripts\;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python3X_64\;C:\Users\Protorsky\AppData\Roaming\Python\Python312\Scripts;%PATH%%
+"c:\Program Files\Microsoft VS Code\Code.exe"
