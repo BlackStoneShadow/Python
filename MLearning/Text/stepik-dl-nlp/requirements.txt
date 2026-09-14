@@ -10,7 +10,7 @@ pandas
 tqdm
 Cython==0.29.34
 wheel
-youtokentome
+#youtokentome==1.0.6 -> pip install youtokentome==1.0.6 --no-build-isolation    
 seaborn
 ipykernel
 ipython
@@ -18,3 +18,4 @@ pyconll
 gensim==3.8.1
 wget
 livelossplot==0.5.3
+notebook
