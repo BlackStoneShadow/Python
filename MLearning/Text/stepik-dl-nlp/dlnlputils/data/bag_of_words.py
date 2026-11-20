@@ -1,6 +1,7 @@
+import torch
+import functools
 import numpy as np
 import scipy.sparse as sp
-import torch
 from torch.utils.data import Dataset
 from sklearn.decomposition import TruncatedSVD, PCA
 
@@ -83,44 +84,50 @@ def vectorize_texts(tokenized_texts, word2id, word2freq, mode='tfidf', scale=Tru
 
     return result.tocsr()
 
-# def composition_texts(vectors, n_components = 300):
-#     if sp.issparse(vectors):
-#         svd = TruncatedSVD(n_components=n_components, random_state=42)
-#         result = svd.fit_transform(vectors)
-#         variance = svd.explained_variance_ratio_.sum()
-#     else:
-#         pca = PCA(n_components=n_components, random_state=42)
-#         result = pca.fit_transform(vectors)
-#         variance = pca.explained_variance_ratio_.sum()
+def resolve_model(func):
+    """
+    Декоратор, который определяет n_components по target_variance,
+    если n_components не был передан явно.
+    """
+    @functools.wraps(func)
+    def wrapper(vectors, model=None, target_variance=0.95, **kwargs):
+        # Если число компонент не задано, вычисляем его по дисперсии
+        if model is None:
+            if sp.issparse(vectors):
+                max_k = min(vectors.shape[0] - 1, vectors.shape[1] - 1)
+                svd = TruncatedSVD(n_components=max_k, random_state=42)
+                svd.fit(vectors)
+                
+                cumulative_variance = np.cumsum(svd.explained_variance_ratio_)
+                if cumulative_variance[-1] >= target_variance:
+                    n_components = int(np.argmax(cumulative_variance >= target_variance)) + 1
+                else:
+                    n_components = max_k
 
-#     return sp.csr_matrix(result), variance
+                model = TruncatedSVD(n_components=n_components, random_state=42)                                    
+            else:
+                pca = PCA(n_components=target_variance, random_state=42)
+                pca.fit(vectors)
+                n_components = pca.n_components_
 
-def composition_texts(vectors, target_variance=0.95, n_components=1000):
-    if sp.issparse(vectors):
-        # TruncatedSVD не принимает порог дисперсии напрямую.
-        n_components = min(n_components, vectors.shape[0] - 1, vectors.shape[1] - 1)
-        
-        svd = TruncatedSVD(n_components=n_components, random_state=42)
-        transformed = svd.fit_transform(vectors)
-        
-        # Считаем кумулятивную (накопленную) долю дисперсии
-        cumulative_variance = np.cumsum(svd.explained_variance_ratio_)
-        
-        # Ищем первый индекс, где накопленная дисперсия >= целевой
-        if cumulative_variance[-1] >= target_variance:        
-            n_components = int(np.argmax(cumulative_variance >= target_variance)) + 1
+                model = PCA(n_components=n_components, random_state=42)
+
+            model.fit(vectors)
             
-        result = transformed[:, :n_components]
-        actual_variance = float(cumulative_variance[n_components - 1])        
-    else:
-        # Обычный PCA умеет подбирать число компонент сам, если передать float от 0.0 до 1.0
-        pca = PCA(n_components=target_variance, random_state=42)
-        result = pca.fit_transform(vectors)
-        
-        actual_variance = float(pca.explained_variance_ratio_.sum())
+        # Передаем готовое целое число n_components в основную функцию
+        return func(vectors, model, **kwargs)
+    return wrapper
 
-    return sp.csr_matrix(result), actual_variance
+@resolve_model
+def composition_texts(vectors, model):
+    """
+    Выполняет сжатие размерности для заданного числа компонент.
+    """
+    result = model.transform(vectors)
+    actual_variance = float(model.explained_variance_ratio_.sum())
 
+    return sp.csr_matrix(result), actual_variance, model
+    
 class SparseFeaturesDataset(Dataset):
     def __init__(self, features, targets):
         self.features = features
